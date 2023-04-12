@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     
     ####   created apps   ####
     'user.apps.UserConfig',
-
+    'shelves.apps.ShelvesConfig',
+    
 
     #### Third partu apps ####
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -137,8 +139,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.)
+    # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+        
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-    'rest_framework_simplejwt.authentication.JWTAuthentication',)
+    'rest_framework_simplejwt.authentication.JWTAuthentication',),
   }
 
 AUTH_USER_MODEL = "user.User"
