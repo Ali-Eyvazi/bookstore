@@ -1,0 +1,11 @@
+
+web:
+    restart: always
+    build: .
+    ports:
+       - 8000:8000
+    volumes:
+       - ./bookstore:/home/bookstore
+    env_file: ./bookstore/.env
+    command: /bin/sh -c 'python manage.py makemigrations --noinput; python manage.py migrate; gunicorn --chdir ./bookstore/ bookstore.wsgi:application --bind 0.0.0.0:8000 --reload;'
+  
