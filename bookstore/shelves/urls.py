@@ -6,6 +6,8 @@ from . import views
 
 APP_NAME = 'shelves'
 urlpatterns = [
-    path('books/', views.BooksView.as_view())
+    path('books/', views.BooksView.as_view()),
+    path('book/<int:book_id>/',views.BookDetailView.as_view()),
+
    
 ]
